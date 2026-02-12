@@ -6,29 +6,30 @@
         <script>
             $(document).ready( function() {
 
-                $(".star").click( function() {
+                $("star").click( function () {
                     const value = $(this).attr('data-value')
 
-                    ///Clear all the red stars
-                    $(".star").removeClass('Red')
+                    ///Claer all the red stars
+                    $(".star").removeClass('red')
 
-                    /// Paint it Red!
-                    $('.star').each( (index, elem) => {
-                        const itemValue= $(elem).attr('data-value')
-                        if(itemValue <= value) {
-                            $(elem).addClass('Red')
+                    ///Ajax call
+                    $.ajax({
+                        url: "https://api.dev-master.ninja/js/rating",
+                        method: "POST",
+                        //data: {rating: value}, 
+                        success: function(result) {
+                            console.log( ///Paint it Red!
+                            $('.star').each( (index,elem) => {
+                                const itemValue = $(elem).attr('data-value')
+                                if(itemValue <= value) {
+                                    $(elem).addClass('red')
+                                }
+                            }))
                         }
                     })
                 })
             })
-            $.ajax({
-                 url: "https://api.dev-master.ninja/js/rating",
-                method: "POST",
-                data: { rating: data-value },
-                success: function(result) { 
-                    console.log("result", result)
-    }
-})
+          
         </script>
     </head>
     <body>
