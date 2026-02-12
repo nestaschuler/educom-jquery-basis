@@ -1,0 +1,54 @@
+
+
+<html>
+  <head>
+      <title>Save Person</title>
+      <script src="js/jquery.js"></script>
+
+      <script>
+        $(document).ready(function() {
+
+            // Wanneer je op de knop klikt
+            $("#save").click(function() {
+
+                // 1. Verzamel de formulierdata
+                const data = {
+                    firstname: $("#firstname").val(),
+                    lastname: $("#lastname").val(),
+                    email: $("#email").val()
+        
+                }
+
+                // 2. Verstuur de data naar de server
+                $.ajax({
+                    url: "https://api.dev-master.ninja/js/person/save",
+                    method: "POST",
+                    data: data,
+
+                    // 3. Wanneer de server antwoordt
+                    success: function(response) {
+                        console.log("Server response:", response)
+                         $("#date").val(response.person.dateOfBirth)
+
+                    }
+                })
+            })
+        })
+      </script>
+  </head>
+
+  <body>
+
+      <h2>Save Person</h2>
+
+      <form>
+          Firstname: <input type="text" id="firstname"><br>
+          Lastname: <input type="text" id="lastname"><br>
+          Email: <input type="text" id="email"><br>
+          Date: <input type="text" disabled id="date"><br>
+      </form>
+
+      <button id="save">Save</button>
+
+  </body>
+</html>
