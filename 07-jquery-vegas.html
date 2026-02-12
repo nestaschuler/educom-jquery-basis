@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vegas Background</title>
+
+    <!-- Vegas CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vegas/2.4.4/vegas.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Vegas JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vegas/2.4.4/vegas.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            // Load external slides.js
+            $.getJSON("slides.js", function (slides) {
+
+                // Start Vegas with loaded slides
+                $("body").vegas({
+                    slides: slides
+                });
+
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <h1 style="color:white; 
+                text-align:center; 
+                margin-top:50px;">
+        JQuery Vegas (#7)
+    </h1>
+
+</body>
+</html>
